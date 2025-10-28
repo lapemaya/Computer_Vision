@@ -1,0 +1,24 @@
+/crops_db/
+/pipeline_output.log
+/datasetchiavi/
+/runs/
+/features_db/
+/datasetRemote/
+/datasetGlasses/
+/datasetGenerale/
+/yolov8l-world.pt
+/yolomodels/
+/database_export.json
+/detections.db
+/video/
+/SriptTrain/yolov8n.pt
+/datasetwallet/
+/yolov8s-world.pt
+/yolov8x-world.pt
+/Class_per_generale.txt
+/SriptTrain/yolov8l.pt
+/computer vision.code-workspace
+/datasetpenne/
+/SriptTrain/yolo11n.pt
+/MotionBlurRemoval.py
+/datasetWatches/
