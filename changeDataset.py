@@ -1,7 +1,7 @@
 import os
 
 # cartella con i file txt
-cartella = "datasetGlasses2/valid/labels"
+cartella = "datasetchiavi/train/labels"
 
 for nome_file in os.listdir(cartella):
     if nome_file.endswith(".txt"):

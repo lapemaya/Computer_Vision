@@ -98,7 +98,7 @@ def retrive_obj_id(object_id,video_path,outputscan_dir="runs/retrival",db_path="
 
 
 
-def process_images_in_folder(folder_path,feature_target,feature_dist=0.9):
+def process_images_in_folder(folder_path,feature_target,feature_dist=0.85):
     print("entrato")
     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp']
     folder = Path(folder_path)
@@ -160,4 +160,4 @@ def check2feature(img, feature_target):
 
 
 if __name__ == "__main__":
-    retrive_obj_id(object_id=236,video_path="video/tantioggetti.mp4")
+    retrive_obj_id(object_id=359,video_path="video/4obj1.mp4")

@@ -1,10 +1,21 @@
 from ultralytics import YOLO
+from ultralytics import YOLOWorld
 import cv2
 from pathlib import Path
+import torch
 
 def segment_video(input_path, output_dir="runs/segment", confidence=0.25,model_path="runs/train/yolo_Generale/weights/best.pt"):
+    # Determina il device
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"🖥️  ProvaScanDaVideo usando: {device}")
+
     # Carica il modello YOLOv8 per segmentation (puoi scegliere n, s, m, l, x)
-    model = YOLO(model_path)
+    if model_path == "runs/train/yoloworld_generale/weights/best.pt":
+        model = YOLOWorld(model_path)
+    else:
+        model = YOLO(model_path)
+
+    model.to(device)
     # Apri il video
     cap = cv2.VideoCapture(input_path)
     frame_count = 0

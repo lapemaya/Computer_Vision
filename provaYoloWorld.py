@@ -2,7 +2,7 @@ from ultralytics import YOLOWorld
 import cv2
 from pathlib import Path
 
-def segment_video(input_path,prompt_classes, output_dir="runs/World", confidence=0.4,model_path="yolov8x-world.pt"):
+def segment_video(input_path,prompt_classes, output_dir="runs/World", confidence=0.4,model_path="runs/train/yoloworld_generale/weights/best.pt"):
     # Carica il modello YOLOv8 per segmentation (puoi scegliere n, s, m, l, x)
     model = YOLOWorld(model_path)
     model.set_classes(prompt_classes)

@@ -4,6 +4,7 @@ from pathlib import Path
 import json
 import os
 import numpy as np
+import torch
 
 # Mappa tra le classi rilevate e i modelli corrispondenti
 CLASS_TO_MODEL = {
@@ -68,6 +69,10 @@ def verify_detections(segment_dir="runs/segment", output_dir="runs/verification"
 
     distance_threshold: soglia di distanza normalizzata (0-1) sotto la quale due detection sono considerate troppo vicine
     """
+    # Determina il device
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"🖥️  VerifyFinds usando: {device}")
+
     segment_path = Path(segment_dir)
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
@@ -106,6 +111,7 @@ def verify_detections(segment_dir="runs/segment", output_dir="runs/verification"
         if model_path not in loaded_models:
             print(f"📦 Caricamento modello: {model_path}")
             loaded_models[model_path] = YOLO(model_path)
+            loaded_models[model_path].to(device)
 
         model = loaded_models[model_path]
 
@@ -265,9 +271,7 @@ def verify_detections(segment_dir="runs/segment", output_dir="runs/verification"
                         except Exception as e:
                             print(f"⚠️  Errore nell'eliminazione di {file_path.name}: {e}")
 
-                    print(f"{status} - {frame_path.name} (orig_conf: {original_conf:.2f}) → 🗑️  FILE ELIMINATI")
-                else:
-                    print(f"{status} - {frame_path.name} (orig_conf: {original_conf:.2f})")
+                print(f"{status} - {frame_path.name} (orig_conf: {original_conf:.2f})")
                 continue
 
             detail = {
