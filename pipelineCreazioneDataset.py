@@ -10,7 +10,7 @@ import torch
 
 def pipelineCreazioneDataset(video_path, outputscan_dir="runs/segment", db_path="detections.db",
                              feature_dir="features_db", crops_dir="crops_db",
-                             similarity_threshold=0.85, delete_after_import=True, confidence=0.45):
+                             similarity_threshold=0.80, delete_after_import=True, confidence=0.45):
     print("INIZIO IL MIO LAVORO")
 
     # Check device
@@ -45,7 +45,7 @@ def pipelineCreazioneDataset(video_path, outputscan_dir="runs/segment", db_path=
         db_path=db_path,
         similarity_threshold=similarity_threshold,
         delete_after_import=delete_after_import,
-        rotations=16,
+        rotations=32,
         save_mapping=True,
         mapping_output="detection_mapping.json"
     )
@@ -57,4 +57,4 @@ def pipelineCreazioneDataset(video_path, outputscan_dir="runs/segment", db_path=
 
 if __name__ == "__main__":
     print("YUPPIIIIIIIIIIIIIIIIIIIIII")
-    pipelineCreazioneDataset(video_path="video/4obj1.mp4")
+    pipelineCreazioneDataset(video_path="10 days of xmas/10.mp4")
